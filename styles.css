@@ -57,3 +57,20 @@ button:hover {
 p {
   font-size: 1.125rem;
 }
+
+.card {
+  background-color: #fff;
+  width: 300px;
+  min-height: 150px;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 300;
+  display: grid;
+  place-items: center;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
