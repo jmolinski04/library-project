@@ -10,6 +10,8 @@
   --bg-sec-clr: #151b31;
   --btn-clr: #ff8000;
   --btn-hvr-clr: #ff9900;
+  --card-bg-clr: #f20089;
+  --card-sec-bg-clr: #a100f2;
 }
 
 body {
@@ -59,14 +61,22 @@ p {
 }
 
 .card {
-  background-color: #fff;
+  background: linear-gradient(
+    45deg,
+    var(--card-bg-clr),
+    var(--card-sec-bg-clr)
+  );
   width: 300px;
   min-height: 150px;
   border-radius: 10px;
-  color: #000;
-  font-weight: 300;
+  color: var(--main-txt-clr);
   display: grid;
   place-items: center;
+  box-shadow: 4px 3px rgb(105, 105, 105);
+}
+
+.card h3 {
+  font-weight: 400;
 }
 
 .book-list {
