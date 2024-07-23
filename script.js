@@ -21,8 +21,9 @@ function addBookToLibrary() {
 }
 
 function displayBook() {
+  const bookList = document.querySelector(".book-list");
+  bookList.innerHTML = "";
   myLibrary.forEach((book) => {
-    const bookList = document.querySelector(".book-list");
     const { title, author, pages } = book;
     bookList.innerHTML += `<div class="card">
               <h3>Title: ${title}</h3>
@@ -39,6 +40,7 @@ form.addEventListener("submit", (e) => {
 addBookBtn.addEventListener("click", () => {
   addBookToLibrary();
   displayBook();
+  console.log(myLibrary);
 });
 
 toggleDialog.addEventListener("click", () => {
@@ -49,30 +51,3 @@ closeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   sidebar.style.width = "0";
 });
-
-// const book1 = new Book("The Hobbit", "J.R.R Tolkien", 600, "Finished");
-// const book2 = new Book(
-//   "Lord Of The Rings",
-//   "J.R.R Tolkien",
-//   1200,
-//   "Not read yet"
-// );
-
-// const library = [book1];
-
-// addBookBtn.addEventListener("click", () => {
-//   const bookList = document.querySelector(".book-list");
-//   library.forEach((book) => {
-//     const { title, author, pages, read } = book;
-//     // const cardDiv = document.createElement("<div>");
-//     // cardDiv.classList.add("card");
-//     // bookList.appendChild(cardDiv);
-
-//     bookList.innerHTML += `<div class="card">
-//              <h3>Title: ${title}</h3>
-//              <h3>Author: ${author}</h3>
-//              <h3>Number of pages: ${pages}</h3>
-//              <h3>Reading status: ${read}</h3>
-//         </div>`;
-//   });
-// });
