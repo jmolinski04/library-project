@@ -143,3 +143,7 @@ form button:hover {
 form button:focus {
   outline: none;
 }
+
+label:hover {
+  color: var(--btn-clr);
+}
