@@ -76,3 +76,7 @@ document.addEventListener("click", (e) => {
     }
   }
 });
+
+// Tasks
+// Add some sort of form validation other than checking if input fields are empty
+// Max num input 4 digits, Author and Title fields min and max characters, optionally add RegExp
