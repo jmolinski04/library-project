@@ -16,21 +16,33 @@ function Book(title, author, pages) {
 }
 
 function addBookToLibrary() {
-  const book = new Book(bookTitle.value, bookAuthor.value, bookPages.value);
-  myLibrary.push(book);
+  if (!bookTitle.value || !bookAuthor.value || !bookPages.value) {
+    return;
+  } else {
+    const book = new Book(bookTitle.value, bookAuthor.value, bookPages.value);
+    myLibrary.push(book);
+  }
 }
 
 function displayBook() {
-  const bookList = document.querySelector(".book-list");
-  bookList.innerHTML = "";
-  myLibrary.forEach((book) => {
-    const { title, author, pages } = book;
-    bookList.innerHTML += `<div class="card">
+  if (!bookTitle.value || !bookAuthor.value || !bookPages.value) {
+    alert("You have to fill all input fields");
+  } else {
+    const bookList = document.querySelector(".book-list");
+    bookList.innerHTML = "";
+    myLibrary.forEach((book) => {
+      const { title, author, pages } = book;
+      bookList.innerHTML += `<div class="card">
               <h3>Title: ${title}</h3>
               <h3>Author: ${author}</h3>
               <h3>Number of pages: ${pages}</h3>
              </div>`;
-  });
+    });
+  }
+
+  bookTitle.value = "";
+  bookAuthor.value = "";
+  bookPages.value = "";
 }
 
 form.addEventListener("submit", (e) => {
