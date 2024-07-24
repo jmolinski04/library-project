@@ -30,9 +30,9 @@ function displayBook() {
     alert("You have to fill all input fields");
   } else {
     bookList.innerHTML = "";
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
       const { title, author, pages } = book;
-      bookList.innerHTML += `<div class="card">
+      bookList.innerHTML += `<div class="card" data-index="${index}">
               <h3>Title: ${title}</h3>
               <h3>Author: ${author}</h3>
               <h3>Number of pages: ${pages}</h3>
@@ -40,10 +40,6 @@ function displayBook() {
               </div>`;
     });
   }
-
-  bookTitle.value = "";
-  bookAuthor.value = "";
-  bookPages.value = "";
 }
 
 form.addEventListener("submit", (e) => {
@@ -53,6 +49,9 @@ form.addEventListener("submit", (e) => {
 addBookBtn.addEventListener("click", () => {
   addBookToLibrary();
   displayBook();
+  bookTitle.value = "";
+  bookAuthor.value = "";
+  bookPages.value = "";
 });
 
 toggleDialog.addEventListener("click", () => {
@@ -65,15 +64,15 @@ closeBtn.addEventListener("click", (e) => {
 });
 
 document.addEventListener("click", (e) => {
-  const target = e.target.closest(".delete-btn");
-  const myLibraryLength = myLibrary.length;
+  const targetButton = e.target.closest(".delete-btn");
 
-  if (target) {
-    myLibrary.splice(0, myLibraryLength);
-    bookList.innerHTML = "";
+  if (targetButton) {
+    const targetCard = targetButton.closest(".card");
+    console.log(targetCard);
+    if (targetCard) {
+      const cardIndex = targetCard.getAttribute("data-index");
+      myLibrary.splice(cardIndex, 1);
+      targetCard.remove();
+    }
   }
 });
-
-// const newArr = [1, 2, 3, 4];
-// const newArrSpliced = newArr.splice(0, newArr.length);
-// console.log(newArr);
