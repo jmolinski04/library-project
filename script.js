@@ -6,6 +6,7 @@ const form = document.querySelector("form");
 const bookTitle = document.querySelector("#title");
 const bookAuthor = document.querySelector("#author");
 const bookPages = document.querySelector("#pages");
+const bookList = document.querySelector(".book-list");
 
 const myLibrary = [];
 
@@ -28,7 +29,6 @@ function displayBook() {
   if (!bookTitle.value || !bookAuthor.value || !bookPages.value) {
     alert("You have to fill all input fields");
   } else {
-    const bookList = document.querySelector(".book-list");
     bookList.innerHTML = "";
     myLibrary.forEach((book) => {
       const { title, author, pages } = book;
@@ -36,7 +36,8 @@ function displayBook() {
               <h3>Title: ${title}</h3>
               <h3>Author: ${author}</h3>
               <h3>Number of pages: ${pages}</h3>
-             </div>`;
+              <button class="delete-btn">X</button>
+              </div>`;
     });
   }
 
@@ -52,7 +53,6 @@ form.addEventListener("submit", (e) => {
 addBookBtn.addEventListener("click", () => {
   addBookToLibrary();
   displayBook();
-  console.log(myLibrary);
 });
 
 toggleDialog.addEventListener("click", () => {
@@ -63,3 +63,17 @@ closeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   sidebar.style.width = "0";
 });
+
+document.addEventListener("click", (e) => {
+  const target = e.target.closest(".delete-btn");
+  const myLibraryLength = myLibrary.length;
+
+  if (target) {
+    myLibrary.splice(0, myLibraryLength);
+    bookList.innerHTML = "";
+  }
+});
+
+// const newArr = [1, 2, 3, 4];
+// const newArrSpliced = newArr.splice(0, newArr.length);
+// console.log(newArr);

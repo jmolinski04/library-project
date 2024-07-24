@@ -66,18 +66,20 @@ p {
 }
 
 .card {
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
     var(--card-bg-clr),
     var(--card-sec-bg-clr)
-  );
+  ); */
+  background-color: #fff;
   width: 300px;
   min-height: 150px;
   border-radius: 10px;
-  color: var(--main-txt-clr);
+  color: #000;
   display: grid;
   place-items: center;
   box-shadow: 4px 3px rgb(105, 105, 105);
+  font-size: 1.125rem;
 }
 
 .card h3 {
@@ -146,4 +148,21 @@ form button:focus {
 
 label:hover {
   color: var(--btn-clr);
+}
+
+.delete-btn {
+  background-color: var(--btn-clr);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: var(--main-txt-clr);
+  padding-block: 0.375rem;
+  font-weight: 500;
+  font-size: 1.125rem;
+  padding-inline: 1.125rem;
+}
+
+.delete-btn:hover {
+  background-color: var(--btn-hvr-clr);
+  cursor: pointer;
 }
